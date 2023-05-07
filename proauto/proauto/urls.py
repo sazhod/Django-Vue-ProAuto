@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from API.views import ServiceAPIView, WorkExampleAPIView, ImagesAPIView
+from API.yasg import urlpatterns as doc_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/services/', ServiceAPIView.as_view()),
     path('api/v1/worksexamples/', WorkExampleAPIView.as_view()),
     path('api/v1/images/', ImagesAPIView.as_view())
-]
+] + doc_urls
