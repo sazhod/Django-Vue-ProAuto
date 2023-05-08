@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'nested_inline',
     'rest_framework',
+    'corsheaders',
     'services.apps.ServicesConfig',
     'API.apps.ApiConfig',
 ]
@@ -52,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'proauto.urls'
@@ -143,3 +146,6 @@ REST_FRAMEWORK = {
     ]
 }
 
+# Django Cors Headers
+
+CORS_ORIGIN_ALLOW_ALL = True

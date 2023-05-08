@@ -27,18 +27,17 @@ class WorkExampleModel(models.Model):
     """
     Модель описывающая примеры работ по услугам.
     """
-    service_id = models.ForeignKey(ServiceModel, on_delete=models.CASCADE)
-    description = models.TextField(verbose_name='Описание')
-    start_date = models.DateTimeField(verbose_name='Дата начала работы')
-    end_date = models.DateTimeField('Дата окончания работы')
-
-    def __str__(self):
-        return f'Для услуги "{self.service_id}"'
-
     class Meta:
         verbose_name = 'Пример работы'
         verbose_name_plural = 'Примеры работ'
 
+    service_id = models.ForeignKey(ServiceModel, on_delete=models.CASCADE, related_name='work_examples_set')
+    description = models.TextField(verbose_name='Описание')
+    start_date = models.DateField(verbose_name='Дата начала работы')
+    end_date = models.DateField(verbose_name='Дата окончания работы')
+
+    def __str__(self):
+        return f'Для услуги "{self.service_id}"'
 
 class ImagesModel(models.Model):
     """
@@ -51,7 +50,7 @@ class ImagesModel(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
     before_image = models.ImageField(upload_to='static/services/images/', verbose_name='Изображение до')
     after_image = models.ImageField(upload_to='static/services/images/', verbose_name='Изображение после')
-    work_example_id = models.ForeignKey(WorkExampleModel, verbose_name='Фото работ', on_delete=models.CASCADE)
+    work_example_id = models.ForeignKey(WorkExampleModel, verbose_name='Фото работ', on_delete=models.CASCADE, related_name='images_set')
 
     def before_image_preview(self):
             return mark_safe(

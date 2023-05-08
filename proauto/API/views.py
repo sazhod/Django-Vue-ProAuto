@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, viewsets
 
 from .models import ServiceModel, WorkExampleModel, ImagesModel
 from .serializers import ServiceSerializer, WorkExampleSerializer, ImagesSerializer
 
 
-class ServiceAPIView(generics.ListAPIView):
+class ServiceAPIView(viewsets.ReadOnlyModelViewSet):
     queryset = ServiceModel.objects.all()
     serializer_class = ServiceSerializer
 

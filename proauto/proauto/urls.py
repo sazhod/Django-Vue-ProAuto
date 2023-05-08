@@ -15,13 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from API.views import ServiceAPIView, WorkExampleAPIView, ImagesAPIView
 from API.yasg import urlpatterns as doc_urls
+from rest_framework import routers
+
+
+router = routers.SimpleRouter()
+router.register(r'services', ServiceAPIView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/services/', ServiceAPIView.as_view()),
+    path('api/v1/', include(router.urls)),
     path('api/v1/worksexamples/', WorkExampleAPIView.as_view()),
     path('api/v1/images/', ImagesAPIView.as_view())
 ] + doc_urls
