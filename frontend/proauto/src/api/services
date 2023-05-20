@@ -4,5 +4,10 @@ export const Service = {
     return HTTP.get('/services/').then(response => {
       return response.data
     })
+  },
+  work_examples(service_id) {
+    return HTTP.get(`/services/${service_id}/work_examples/`).then(response => {
+      return response;
+    })
   }
 }
