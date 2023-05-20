@@ -39,6 +39,7 @@ class WorkExampleModel(models.Model):
     def __str__(self):
         return f'Для услуги "{self.service_id}"'
 
+
 class ImagesModel(models.Model):
     """
     Модель описывающая изображения ДО ПОСЛЕ для примеров работ.
