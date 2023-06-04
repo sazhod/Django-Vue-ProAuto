@@ -15,7 +15,7 @@ class WorkExampleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = WorkExampleModel
-        fields = ('id', 'description', 'start_date', 'end_date', 'images')
+        fields = ('id', 'service_id', 'description', 'start_date', 'end_date', 'images')
 
 
 class ServiceSerializer(serializers.ModelSerializer):

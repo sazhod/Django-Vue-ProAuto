@@ -13,8 +13,9 @@ class ServiceAPIView(viewsets.ReadOnlyModelViewSet):
 
     @action(methods=['get'], detail=True)
     def work_examples(self, request, pk=None):
-        serializer = WorkExampleSerializer(WorkExampleModel.objects.get(pk=pk))
-        return Response({'work_examples': serializer.data})
+        queryset = WorkExampleModel.objects.filter(service_id=pk)
+        serializer = WorkExampleSerializer(queryset, many=True)
+        return Response({'work_examples': serializer.data if serializer.data else [{'description':'В данный момент примеры работ отсутсвуют.'}]})
 
 
 class WorkExampleAPIView(generics.ListAPIView):
