@@ -9,38 +9,80 @@
   </head>
   <body class="bg-bg">
     
+    <style>
+      :root {
+        --scrollbar-width: 7px;
+        --scrollbar-track-color: #fde047;
+        --scrollbar-thumb-color: #141414;
+      }
+
+      /* Для WebKit-браузеров (например, Chrome, Safari) */
+      ::-webkit-scrollbar {
+        width: var(--scrollbar-width);
+      }
     
-    <nav class="fixed top-0 z-50 w-full bg-menu-bg border-b border-menu-border">
+      ::-webkit-scrollbar-track {
+        background: var(--scrollbar-thumb-color);
+      }
+    
+      ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-track-color);
+      }
+    
+      /* Для Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--scrollbar-track-color) var(--scrollbar-thumb-color);
+      }
+    
+      *::-moz-scrollbar {
+        width: var(--scrollbar-width);
+      }
+    
+      *::-moz-scrollbar-track {
+        background: var(--scrollbar-thumb-color);
+      }
+    
+      *::-moz-scrollbar-thumb {
+        background: var(--scrollbar-track-color);
+      }
+    </style>
+    
+    
+    <nav class=" fixed top-0 z-50 w-full bg-menu-bg ">
       <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center justify-start">
-            <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+            <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-main rounded-lg sm:hidden hover:bg-menu-bg focus:outline-none focus:bg-main focus:text-dark-text">
                 <span class="sr-only">Open sidebar</span>
                 <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                 </svg>
             </button>
-            <a href="/" class="flex ml-2 md:mr-24">
+            <a href="/" class=" flex ml-2 md:mr-24">
               <img src="/logo.png" class="h-8 mr-3" alt="Logo" />
               <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-main">ProAuto</span>
             </a>
           </div>
           <div class="flex items-center">
-              <div class="flex items-center ml-3">
-                <button type="button" class="text-main border border-main hover:bg-main hover:text-dark-text font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                  Перейти на 2GIS
-                </button>
-              </div>
+            <div class="flex items-center ml-3">
+              <a type="button" class="md:text-desktop-body text-mobile-body text-main border border-main hover:bg-main hover:text-dark-text rounded-lg  px-2 py-2.5 text-center mr-2 mb-2" href="https://api.whatsapp.com/send/?phone=79371555516&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%0A%0A%D0%9F%D0%B8%D1%88%D1%83+%D0%B8%D0%B7+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F+2%D0%93%D0%98%D0%A1.%0A%0A&type=phone_number&app_absent=0">
+                Whatsapp
+              </a>
+              <a href="https://go.2gis.com/e87cl" type="button" class="md:text-desktop-body text-mobile-body text-main border border-main hover:bg-main hover:text-dark-text rounded-lg px-2 py-2.5 text-center mr-2 mb-2">
+                2GIS
+              </a>
             </div>
+          </div>
         </div>
       </div>
     </nav>
 
-    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-menu-bg border-r border-menu-border sm:translate-x-0" aria-label="Sidebar">
-      <div class="h-full px-3 pb-4 overflow-y-auto ">
-          <ul class="space-y-2 font-medium ">
+    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-menu-bg  sm:translate-x-0" aria-label="Sidebar">
+      <div class="h-full px-3 pb-4 overflow-y-auto flex flex-col justify-between">
+        <ul class="space-y-2 font-medium">
             <li>
-                <a id="main_btn" href="#" class="sidabaritem flex items-center p-2 text-text rounded-lg hover:bg-hovered-bg focus:bg-main focus:text-dark-text">
+                <a id="main_btn" href="#home" class="sidabaritem flex items-center p-2 text-text rounded-lg hover:bg-hovered-bg hover:text-text">
                   <svg aria-hidden="true" class="w-6 h-6 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
                   </svg>
@@ -48,7 +90,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="sidabaritem flex items-center p-2 text-text rounded-lg hover:bg-hovered-bg focus:bg-main focus:text-dark-text">
+                <a href="#services" class="sidabaritem flex items-center p-2 text-text rounded-lg hover:bg-hovered-bg hover:text-text">
                   <svg aria-hidden="true" class="w-6 h-6 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                   </svg>
@@ -56,39 +98,160 @@
                   </a>
             </li>
             <li>
-                <a href="#" class="sidabaritem flex items-center p-2 text-text rounded-lg hover:bg-hovered-bg focus:bg-main focus:text-dark-text">
+                <a href="#map" class="sidabaritem flex items-center p-2 text-text rounded-lg hover:bg-hovered-bg hover:text-text">
                   <svg aria-hidden="true" class="w-6 h-6 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z"></path>
-                  </svg>
-                  <span class="flex-1 ml-3 whitespace-nowrap">О Нас</span>
-                  </a>
+                    <path d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
+                  </svg>                  
+                  <span class="flex-1 ml-3 whitespace-nowrap">Мы на карте</span>
+                </a>
             </li>
             <li>
-                <a href="#" class="sidabaritem flex items-center p-2 text-text rounded-lg hover:bg-hovered-bg focus:bg-main focus:text-dark-text">
+                <a href="#info" class="sidabaritem flex items-center p-2 text-text rounded-lg hover:bg-hovered-bg hover:text-text">
                   <svg aria-hidden="true" class="w-6 h-6 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
                   </svg>
-                  <span class="flex-1 ml-3 whitespace-nowrap">Контакты</span>
+                  <span class="flex-1 ml-3 whitespace-nowrap">О нас</span>
                 </a>
+            </li>
+          </ul>
+          <ul class="space-y-2 font-medium mt-auto mb-10">
+            <li>
+              <a class="sidabaritem flex items-center p-2 text-main border border-main hover:bg-main hover:text-dark-text font-medium rounded-lg text-center" href="https://api.whatsapp.com/send/?phone=79371555516&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%0A%0A%D0%9F%D0%B8%D1%88%D1%83+%D0%B8%D0%B7+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F+2%D0%93%D0%98%D0%A1.%0A%0A&type=phone_number&app_absent=0">
+                <span class="flex-1 whitespace-nowrap">Написать нам в Whatsapp</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://go.2gis.com/e87cl"  class="sidabaritem flex items-center p-2 text-main border border-main hover:bg-main hover:text-dark-text font-medium rounded-lg text-center">
+                <span class="flex-1 whitespace-nowrap">Найти нас в 2GIS</span>
+              </a>
             </li>
           </ul>
       </div>
     </aside>
     
     <div class="p-6 sm:ml-64">
-      <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
-        <div id="app">
-
+      <div class="rounded-lg">
+        <div id="home" class="md:mt-0 mt-20 mb-10 relative">
+          <img class="rounded-lg blur blur-xs w-full h-auto" src="/home.png" alt="image description">
+          <div class="absolute inset-0 flex items-center justify-left">
+            <div class="md:text-desktop-body text-mobile-body md:ml-20 ml-3 text-white absolute bg-bg bg-opacity-80 pl-5 pr-5 rounded-lg">
+              <p class="md:text-desktop-head text-mobile-head">Автосервис <span class="text-main">ProAuto</span></p><br>
+              <p class="md:mb-2">Диагностика и ремонт авто у <span class="text-main">Профессионалов</span>.</p>
+              <p class="md:mb-2">Наш номер <span class="text-main">+7‒937‒155‒55‒16</span>.</p>
+              <p class="md:mb-2">Наша почта <span class="text-main">proauto702@gmail.com</span>.</p>
+              <p class="md:mb-2">Ежедневно с <span class="text-main">10:00</span> до <span class="text-main">20:00</span>.</p>
+              <p class="md:mb-2">Наш адрес <span class="text-main">г. Уфа, ул Собинова, 10а</span>.</p>
+              <p class="md:mb-2">Мы на карте <a href="https://go.2gis.com/e87cl" class="text-main underline">2GIS</a>.</p>
+              <p class="mb-2">Написать нам в 
+                  <a class="text-main underline" href="https://api.whatsapp.com/send/?phone=79371555516&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%0A%0A%D0%9F%D0%B8%D1%88%D1%83+%D0%B8%D0%B7+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F+2%D0%93%D0%98%D0%A1.%0A%0A&type=phone_number&app_absent=0">
+                    Whatsapp
+                  </a>.
+              </p>
+            </div>
+          </div>
         </div>
+        <div class="rounded-lg mb-10">
+          <!-- НАШИ УСЛУГИ -->
+          <div id="services" class="md:text-desktop-body text-mobile-body text-white text-center mb-10">
+            <p class="md:text-desktop-head text-mobile-head">Наши <span class="text-main">Услуги</span></p>
+            <p >Перечень оказываемых нами услуг.</p>
+          </div>
+          <div id="app" class="mb-10">
+            <!-- CONTENT -->
+          </div>
+        </div>
+        <hr class="h-px my-8 bg-text border-0">
+        <div class="rounded-lg mb-10">
+          <!-- MAP -->
+          <div id="map" class="md:text-desktop-body text-mobile-body text-white text-center mb-10">
+            <p class="md:text-desktop-head text-mobile-head"><span class="text-main">ProAuto</span> на карте</p>
+            <p >Для построения маршрута нажмите "Доехать с 2ГИС".</p>
+          </div>
+          <div class="md:text-desktop-body text-mobile-body text-white mb-10">
+              <p class="mb-2">Мы находимся по адресу <span class="text-main">ул. Собинова, д. 10а.</span> </p>
+              <p class="mb-2"> Часы работы <span class="text-main">Ежедневно с 10:00 до 20:00.</span> </p>
+              <p class="mb-2"> Наши
+                  <a class="text-main underline" href="https://2gis.ru/ufa/firm/70000001066553125/55.967%2C54.748516/tab/reviews?m=55.967348%2C54.748489%2F18.86">
+                      отзывы
+                  </a> на 2GIS.
+              </p>
+          </div>
+          <iframe id="map_949601871" frameborder="0" width="100%" height="600px" sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe><script type="text/javascript">(function(e,t){var r=document.getElementById(e);r.contentWindow.document.open(),r.contentWindow.document.write(atob(t)),r.contentWindow.document.close()})("map_949601871", "PGJvZHk+PHN0eWxlPgogICAgICAgIGh0bWwsIGJvZHkgewogICAgICAgICAgICBtYXJnaW46IDA7CiAgICAgICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgfQogICAgICAgIGh0bWwsIGJvZHksICNtYXAgewogICAgICAgICAgICB3aWR0aDogMTAwJTsKICAgICAgICAgICAgaGVpZ2h0OiAxMDAlOwogICAgICAgIH0KICAgICAgICAuYnVsbGV0LW1hcmtlciB7CiAgICAgICAgICAgIHdpZHRoOiAyMHB4OwogICAgICAgICAgICBoZWlnaHQ6IDIwcHg7CiAgICAgICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7CiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmY7CiAgICAgICAgICAgIGJveC1zaGFkb3c6IDAgMXB4IDNweCAwIHJnYmEoMCwgMCwgMCwgMC4yKTsKICAgICAgICAgICAgYm9yZGVyOiA0cHggc29saWQgIzAyODFmMjsKICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNTAlOwogICAgICAgIH0KICAgICAgICAucGVybWFuZW50LXRvb2x0aXAgewogICAgICAgICAgICBiYWNrZ3JvdW5kOiBub25lOwogICAgICAgICAgICBib3gtc2hhZG93OiBub25lOwogICAgICAgICAgICBib3JkZXI6IG5vbmU7CiAgICAgICAgICAgIHBhZGRpbmc6IDZweCAxMnB4OwogICAgICAgICAgICBjb2xvcjogIzI2MjYyNjsKICAgICAgICB9CiAgICAgICAgLnBlcm1hbmVudC10b29sdGlwOmJlZm9yZSB7CiAgICAgICAgICAgIGRpc3BsYXk6IG5vbmU7CiAgICAgICAgfQogICAgICAgIC5kZy1wb3B1cF9oaWRkZW5fdHJ1ZSB7CiAgICAgICAgICAgIGRpc3BsYXk6IGJsb2NrOwogICAgICAgIH0KICAgICAgICAubGVhZmxldC1jb250YWluZXIgLmxlYWZsZXQtcG9wdXAgLmxlYWZsZXQtcG9wdXAtY2xvc2UtYnV0dG9uIHsKICAgICAgICAgICAgdG9wOiAwOwogICAgICAgICAgICByaWdodDogMDsKICAgICAgICAgICAgd2lkdGg6IDIwcHg7CiAgICAgICAgICAgIGhlaWdodDogMjBweDsKICAgICAgICAgICAgZm9udC1zaXplOiAyMHB4OwogICAgICAgICAgICBsaW5lLWhlaWdodDogMTsKICAgICAgICB9CiAgICA8L3N0eWxlPjxkaXYgaWQ9Im1hcCI+PC9kaXY+PHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiIHNyYz0iaHR0cHM6Ly9tYXBzLmFwaS4yZ2lzLnJ1LzIuMC9sb2FkZXIuanM/cGtnPWZ1bGwmYW1wO3NraW49bGlnaHQiPjwvc2NyaXB0PjxzY3JpcHQ+KGZ1bmN0aW9uKGUpe3ZhciB0PUpTT04ucGFyc2UoZSkscj10Lm9yZGVyZWRHZW9tZXRyaWVzLG49dC5tYXBQb3NpdGlvbixhPXQuaXNXaGVlbFpvb21FbmFibGVkO2Z1bmN0aW9uIG8oZSl7cmV0dXJuIGRlY29kZVVSSUNvbXBvbmVudChhdG9iKGUpLnNwbGl0KCIiKS5tYXAoZnVuY3Rpb24oZSl7cmV0dXJuIiUiKygiMDAiK2UuY2hhckNvZGVBdCgwKS50b1N0cmluZygxNikpLnNsaWNlKC0yKX0pLmpvaW4oIiIpKX1ERy50aGVuKGZ1bmN0aW9uKCl7dmFyIGU9REcubWFwKCJtYXAiLHtjZW50ZXI6W24ubGF0LG4ubG9uXSx6b29tOm4uem9vbSxzY3JvbGxXaGVlbFpvb206YSx6b29tQ29udHJvbDohYX0pO0RHLmdlb0pTT04ocix7c3R5bGU6ZnVuY3Rpb24oZSl7dmFyIHQscixuLGEsbztyZXR1cm57ZmlsbENvbG9yOm51bGw9PT0odD1lKXx8dm9pZCAwPT09dD92b2lkIDA6dC5wcm9wZXJ0aWVzLmZpbGxDb2xvcixmaWxsT3BhY2l0eTpudWxsPT09KHI9ZSl8fHZvaWQgMD09PXI/dm9pZCAwOnIucHJvcGVydGllcy5maWxsT3BhY2l0eSxjb2xvcjpudWxsPT09KG49ZSl8fHZvaWQgMD09PW4/dm9pZCAwOm4ucHJvcGVydGllcy5zdHJva2VDb2xvcix3ZWlnaHQ6bnVsbD09PShhPWUpfHx2b2lkIDA9PT1hP3ZvaWQgMDphLnByb3BlcnRpZXMuc3Ryb2tlV2lkdGgsb3BhY2l0eTpudWxsPT09KG89ZSl8fHZvaWQgMD09PW8/dm9pZCAwOm8ucHJvcGVydGllcy5zdHJva2VPcGFjaXR5fX0scG9pbnRUb0xheWVyOmZ1bmN0aW9uKGUsdCl7cmV0dXJuInJhZGl1cyJpbiBlLnByb3BlcnRpZXM/REcuY2lyY2xlKHQsZS5wcm9wZXJ0aWVzLnJhZGl1cyk6REcubWFya2VyKHQse2ljb246ZnVuY3Rpb24oZSl7cmV0dXJuIERHLmRpdkljb24oe2h0bWw6IjxkaXYgY2xhc3M9J2J1bGxldC1tYXJrZXInIHN0eWxlPSdib3JkZXItY29sb3I6ICIrZSsiOyc+PC9kaXY+IixjbGFzc05hbWU6Im92ZXJyaWRlLWRlZmF1bHQiLGljb25TaXplOlsyMCwyMF0saWNvbkFuY2hvcjpbMTAsMTBdfSl9KGUucHJvcGVydGllcy5jb2xvcil9KX0sb25FYWNoRmVhdHVyZTpmdW5jdGlvbihlLHQpe2UucHJvcGVydGllcy5kZXNjcmlwdGlvbiYmdC5iaW5kUG9wdXAobyhlLnByb3BlcnRpZXMuZGVzY3JpcHRpb24pLHtjbG9zZUJ1dHRvbjohMCxjbG9zZU9uRXNjYXBlS2V5OiEwfSksZS5wcm9wZXJ0aWVzLnRpdGxlJiZ0LmJpbmRUb29sdGlwKG8oZS5wcm9wZXJ0aWVzLnRpdGxlKSx7cGVybWFuZW50OiEwLG9wYWNpdHk6MSxjbGFzc05hbWU6InBlcm1hbmVudC10b29sdGlwIn0pfX0pLmFkZFRvKGUpfSl9KSgneyJvcmRlcmVkR2VvbWV0cmllcyI6W3sidHlwZSI6IkZlYXR1cmUiLCJwcm9wZXJ0aWVzIjp7ImRlc2NyaXB0aW9uIjoiIiwic3Ryb2tlQ29sb3IiOiIjMDAwMDAwIiwic3Ryb2tlV2lkdGgiOjIsInN0cm9rZU9wYWNpdHkiOjAuNSwiZmlsbENvbG9yIjoiI2ZkZTA0NyIsImZpbGxPcGFjaXR5IjowLjUsInpJbmRleCI6MX0sImdlb21ldHJ5Ijp7InR5cGUiOiJQb2x5Z29uIiwiY29vcmRpbmF0ZXMiOltbWzU1Ljk2NzA0Myw1NC43NDg0NzRdLFs1NS45NjcyOTUsNTQuNzQ4NDJdLFs1NS45NjczMzgsNTQuNzQ4NDc1XSxbNTUuOTY3Mjc0LDU0Ljc0ODVdLFs1NS45NjcyNzksNTQuNzQ4NTE5XSxbNTUuOTY2ODEyLDU0Ljc0ODYyNF0sWzU1Ljk2NjYwOSw1NC43NDg2NDldLFs1NS45NjY1NjYsNTQuNzQ4NTVdLFs1NS45NjY3OTEsNTQuNzQ4NTM0XSxbNTUuOTY3MDQzLDU0Ljc0ODQ3NF1dXX0sImlkIjoxMDU0fSx7InR5cGUiOiJGZWF0dXJlIiwicHJvcGVydGllcyI6eyJkZXNjcmlwdGlvbiI6IiIsInN0cm9rZUNvbG9yIjoiIzAwMDAwMCIsInN0cm9rZVdpZHRoIjoyLCJzdHJva2VPcGFjaXR5IjoxLCJ6SW5kZXgiOjJ9LCJnZW9tZXRyeSI6eyJ0eXBlIjoiTGluZVN0cmluZyIsImNvb3JkaW5hdGVzIjpbWzU1Ljk2ODMzNiw1NC43NDgzODNdLFs1NS45NjcxOTksNTQuNzQ4NjQ5XSxbNTUuOTY3MTE4LDU0Ljc0ODU2Ml1dfSwiaWQiOjEzMTZ9LHsidHlwZSI6IkZlYXR1cmUiLCJwcm9wZXJ0aWVzIjp7ImRlc2NyaXB0aW9uIjoiIiwic3Ryb2tlQ29sb3IiOiIjMDAwMDAwIiwic3Ryb2tlV2lkdGgiOjIsInN0cm9rZU9wYWNpdHkiOjEsImZpbGxDb2xvciI6IiMwMDAwMDAiLCJmaWxsT3BhY2l0eSI6MSwiekluZGV4IjozfSwiZ2VvbWV0cnkiOnsidHlwZSI6IlBvbHlnb24iLCJjb29yZGluYXRlcyI6W1tbNTUuOTY3MjIsNTQuNzQ4NTczXSxbNTUuOTY3MTA4LDU0Ljc0ODU1M10sWzU1Ljk2NzA3LDU0Ljc0ODYwN10sWzU1Ljk2NzIyLDU0Ljc0ODU3M11dXX0sImlkIjoxNDIwfSx7InR5cGUiOiJGZWF0dXJlIiwicHJvcGVydGllcyI6eyJjb2xvciI6IiNmZGUwNDciLCJ0aXRsZSI6IlBHZ3pQbEJ5YjBGMWRHODhMMmd6UGc9PSIsImRlc2NyaXB0aW9uIjoiUEhOMGVXeGxQZ291YkdWaFpteGxkQzF3YjNCMWNDMWpiMjUwWlc1MElIQWdld29nSUNBZ2JXRnlaMmx1T2lBeE1Ec0tmUW91YkdWaFpteGxkQzFqYjI1MFlXbHVaWElnTG14bFlXWnNaWFF0Y0c5d2RYQWdMbXhsWVdac1pYUXRjRzl3ZFhBdFkyeHZjMlV0WW5WMGRHOXVJSHNLSUNBZ0lIUnZjRG9nTVRBN0NpQWdJQ0J5YVdkb2REb2dNVEE3Q2lBZ0lDQjNhV1IwYURvZ01qQndlRHNLSUNBZ0lHaGxhV2RvZERvZ01qQndlRHNLSUNBZ0lHWnZiblF0YzJsNlpUb2dNakJ3ZURzS0lDQWdJR3hwYm1VdGFHVnBaMmgwT2lBeE93cDlDaTVzWldGbWJHVjBMWEJ2Y0hWd0xXTnZiblJsYm5RdGQzSmhjSEJsY2lCN0NtSmhZMnRuY205MWJtUTZJQ014T0RFNE1UZzdDbUp2Y21SbGNpMXlZV1JwZFhNNklERXdKVHNLY0dGa1pHbHVaem9nTVRCd2VEc0tmUW91YkdWaFpteGxkQzF0WVhBdGNHRnVaU0F1YkdWaFpteGxkQzF3YjNCMWNDMTBhWEF0WTI5dWRHRnBibVZ5WDNOMlozc0tabWxzYkRvZ0l6RTRNVGd4T0RzS2ZRbzhMM04wZVd4bFBnbzhhREVnYzNSNWJHVTlJbU52Ykc5eU9pQWpabVJsTURRM095SStDdENRMExMUmd0QyswWUhRdGRHQTBMTFF1TkdCSUZCeWIwRjFkRzhLUEM5b01UNEtQSEFnYzNSNWJHVTlJbU52Ykc5eU9pQjNhR2wwWlRzaVBnclFrTkMwMFlEUXRkR0JJTkN6TGlEUW85R0UwTEFzSU5HRDBMc2cwS0hRdnRDeDBMalF2ZEMrMExMUXNDd2dNVERRc0M0S1BDOXdQZ284Y0NCemRIbHNaVDBpWTI5c2IzSTZJSGRvYVhSbE95SStDdENWMExiUXRkQzAwTDNRdGRDeTBMM1F2aURSZ1NBeE1Eb3dNQ0RRdE5DK0lESXdPakF3TGdvOEwzQStDanh3SUhOMGVXeGxQU0pqYjJ4dmNqb2dkMmhwZEdVN0lqNEswSjNRc05HSUlOQzkwTDdRdk5DMTBZQWdLemZpZ0pJNU16ZmlnSkl4TlRYaWdKSTFOZUtBa2pFMkxnbzhMM0ErIiwiekluZGV4IjoxMDAwMDAwMDAwfSwiZ2VvbWV0cnkiOnsidHlwZSI6IlBvaW50IiwiY29vcmRpbmF0ZXMiOls1NS45NjcwNjQsNTQuNzQ4NTA4XX0sImlkIjo2Nzd9XSwibWFwUG9zaXRpb24iOnsibGF0Ijo1NC43NDg0ODYyNjI1NzYwMywibG9uIjo1NS45Njc0MDc4MjI2MDg5NTUsInpvb20iOjE4fSwiaXNXaGVlbFpvb21FbmFibGVkIjpmYWxzZX0nKTwvc2NyaXB0PjxzY3JpcHQgYXN5bmM9IiIgdHlwZT0idGV4dC9qYXZhc2NyaXB0IiBzcmM9Imh0dHBzOi8vd3d3Lmdvb2dsZXRhZ21hbmFnZXIuY29tL2d0YWcvanM/aWQ9VUEtMTU4ODY2MTY4LTEiPjwvc2NyaXB0PjxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0Ij4oZnVuY3Rpb24oZSl7ZnVuY3Rpb24gdCgpe2RhdGFMYXllci5wdXNoKGFyZ3VtZW50cyl9d2luZG93LmRhdGFMYXllcj13aW5kb3cuZGF0YUxheWVyfHxbXSx0KCJqcyIsbmV3IERhdGUpLHQoImNvbmZpZyIsZSksd2luZG93Lmd0YWc9dH0pKCdVQS0xNTg4NjYxNjgtMScpPC9zY3JpcHQ+PC9ib2R5Pg==")</script>
+
+          <script type="text/javascript">(function(e,t){var r=document.getElementById(e);r.contentWindow.document.open(),r.contentWindow.document.write(atob(t)),r.contentWindow.document.close()})("map_133687375", "PGJvZHk+PHN0eWxlPgogICAgICAgIGh0bWwsIGJvZHkgewogICAgICAgICAgICBtYXJnaW46IDA7CiAgICAgICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgfQogICAgICAgIGh0bWwsIGJvZHksICNtYXAgewogICAgICAgICAgICB3aWR0aDogMTAwJTsKICAgICAgICAgICAgaGVpZ2h0OiAxMDAlOwogICAgICAgIH0KICAgICAgICAuYnVsbGV0LW1hcmtlciB7CiAgICAgICAgICAgIHdpZHRoOiAyMHB4OwogICAgICAgICAgICBoZWlnaHQ6IDIwcHg7CiAgICAgICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7CiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmY7CiAgICAgICAgICAgIGJveC1zaGFkb3c6IDAgMXB4IDNweCAwIHJnYmEoMCwgMCwgMCwgMC4yKTsKICAgICAgICAgICAgYm9yZGVyOiA0cHggc29saWQgIzAyODFmMjsKICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNTAlOwogICAgICAgIH0KICAgICAgICAucGVybWFuZW50LXRvb2x0aXAgewogICAgICAgICAgICBiYWNrZ3JvdW5kOiBub25lOwogICAgICAgICAgICBib3gtc2hhZG93OiBub25lOwogICAgICAgICAgICBib3JkZXI6IG5vbmU7CiAgICAgICAgICAgIHBhZGRpbmc6IDZweCAxMnB4OwogICAgICAgICAgICBjb2xvcjogIzI2MjYyNjsKICAgICAgICB9CiAgICAgICAgLnBlcm1hbmVudC10b29sdGlwOmJlZm9yZSB7CiAgICAgICAgICAgIGRpc3BsYXk6IG5vbmU7CiAgICAgICAgfQogICAgICAgIC5kZy1wb3B1cF9oaWRkZW5fdHJ1ZSB7CiAgICAgICAgICAgIGRpc3BsYXk6IGJsb2NrOwogICAgICAgIH0KICAgICAgICAubGVhZmxldC1jb250YWluZXIgLmxlYWZsZXQtcG9wdXAgLmxlYWZsZXQtcG9wdXAtY2xvc2UtYnV0dG9uIHsKICAgICAgICAgICAgdG9wOiAwOwogICAgICAgICAgICByaWdodDogMDsKICAgICAgICAgICAgd2lkdGg6IDIwcHg7CiAgICAgICAgICAgIGhlaWdodDogMjBweDsKICAgICAgICAgICAgZm9udC1zaXplOiAyMHB4OwogICAgICAgICAgICBsaW5lLWhlaWdodDogMTsKICAgICAgICB9CiAgICA8L3N0eWxlPjxkaXYgaWQ9Im1hcCI+PC9kaXY+PHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiIHNyYz0iaHR0cHM6Ly9tYXBzLmFwaS4yZ2lzLnJ1LzIuMC9sb2FkZXIuanM/cGtnPWZ1bGwmYW1wO3NraW49bGlnaHQiPjwvc2NyaXB0PjxzY3JpcHQ+KGZ1bmN0aW9uKGUpe3ZhciB0PUpTT04ucGFyc2UoZSkscj10Lm9yZGVyZWRHZW9tZXRyaWVzLG49dC5tYXBQb3NpdGlvbixhPXQuaXNXaGVlbFpvb21FbmFibGVkO2Z1bmN0aW9uIG8oZSl7cmV0dXJuIGRlY29kZVVSSUNvbXBvbmVudChhdG9iKGUpLnNwbGl0KCIiKS5tYXAoZnVuY3Rpb24oZSl7cmV0dXJuIiUiKygiMDAiK2UuY2hhckNvZGVBdCgwKS50b1N0cmluZygxNikpLnNsaWNlKC0yKX0pLmpvaW4oIiIpKX1ERy50aGVuKGZ1bmN0aW9uKCl7dmFyIGU9REcubWFwKCJtYXAiLHtjZW50ZXI6W24ubGF0LG4ubG9uXSx6b29tOm4uem9vbSxzY3JvbGxXaGVlbFpvb206YSx6b29tQ29udHJvbDohYX0pO0RHLmdlb0pTT04ocix7c3R5bGU6ZnVuY3Rpb24oZSl7dmFyIHQscixuLGEsbztyZXR1cm57ZmlsbENvbG9yOm51bGw9PT0odD1lKXx8dm9pZCAwPT09dD92b2lkIDA6dC5wcm9wZXJ0aWVzLmZpbGxDb2xvcixmaWxsT3BhY2l0eTpudWxsPT09KHI9ZSl8fHZvaWQgMD09PXI/dm9pZCAwOnIucHJvcGVydGllcy5maWxsT3BhY2l0eSxjb2xvcjpudWxsPT09KG49ZSl8fHZvaWQgMD09PW4/dm9pZCAwOm4ucHJvcGVydGllcy5zdHJva2VDb2xvcix3ZWlnaHQ6bnVsbD09PShhPWUpfHx2b2lkIDA9PT1hP3ZvaWQgMDphLnByb3BlcnRpZXMuc3Ryb2tlV2lkdGgsb3BhY2l0eTpudWxsPT09KG89ZSl8fHZvaWQgMD09PW8/dm9pZCAwOm8ucHJvcGVydGllcy5zdHJva2VPcGFjaXR5fX0scG9pbnRUb0xheWVyOmZ1bmN0aW9uKGUsdCl7cmV0dXJuInJhZGl1cyJpbiBlLnByb3BlcnRpZXM/REcuY2lyY2xlKHQsZS5wcm9wZXJ0aWVzLnJhZGl1cyk6REcubWFya2VyKHQse2ljb246ZnVuY3Rpb24oZSl7cmV0dXJuIERHLmRpdkljb24oe2h0bWw6IjxkaXYgY2xhc3M9J2J1bGxldC1tYXJrZXInIHN0eWxlPSdib3JkZXItY29sb3I6ICIrZSsiOyc+PC9kaXY+IixjbGFzc05hbWU6Im92ZXJyaWRlLWRlZmF1bHQiLGljb25TaXplOlsyMCwyMF0saWNvbkFuY2hvcjpbMTAsMTBdfSl9KGUucHJvcGVydGllcy5jb2xvcil9KX0sb25FYWNoRmVhdHVyZTpmdW5jdGlvbihlLHQpe2UucHJvcGVydGllcy5kZXNjcmlwdGlvbiYmdC5iaW5kUG9wdXAobyhlLnByb3BlcnRpZXMuZGVzY3JpcHRpb24pLHtjbG9zZUJ1dHRvbjohMCxjbG9zZU9uRXNjYXBlS2V5OiEwfSksZS5wcm9wZXJ0aWVzLnRpdGxlJiZ0LmJpbmRUb29sdGlwKG8oZS5wcm9wZXJ0aWVzLnRpdGxlKSx7cGVybWFuZW50OiEwLG9wYWNpdHk6MSxjbGFzc05hbWU6InBlcm1hbmVudC10b29sdGlwIn0pfX0pLmFkZFRvKGUpfSl9KSgneyJvcmRlcmVkR2VvbWV0cmllcyI6W3sidHlwZSI6IkZlYXR1cmUiLCJwcm9wZXJ0aWVzIjp7ImRlc2NyaXB0aW9uIjoiIiwic3Ryb2tlQ29sb3IiOiIjMDAwMDAwIiwic3Ryb2tlV2lkdGgiOjIsInN0cm9rZU9wYWNpdHkiOjEsImZpbGxDb2xvciI6IiNmZmMyMDEiLCJmaWxsT3BhY2l0eSI6MC4wOCwiekluZGV4IjoxfSwiZ2VvbWV0cnkiOnsidHlwZSI6IlBvbHlnb24iLCJjb29yZGluYXRlcyI6W1tbNTUuOTY2NTU1LDU0Ljc0ODU1M10sWzU1Ljk2Njc4LDU0Ljc0ODUxOV0sWzU1Ljk2NzI4NCw1NC43NDg0MDRdLFs1NS45NjczNDksNTQuNzQ4NDkxXSxbNTUuOTY3Mjc5LDU0Ljc0ODUyOF0sWzU1Ljk2NjkwOSw1NC43NDg2MTJdLFs1NS45NjY2MDksNTQuNzQ4NjUyXSxbNTUuOTY2NTU1LDU0Ljc0ODU1M11dXX0sImlkIjoxMjkyfSx7InR5cGUiOiJGZWF0dXJlIiwicHJvcGVydGllcyI6eyJkZXNjcmlwdGlvbiI6IiIsInN0cm9rZUNvbG9yIjoiIzAwMDAwMCIsInN0cm9rZVdpZHRoIjoyLCJzdHJva2VPcGFjaXR5IjoxLCJ6SW5kZXgiOjJ9LCJnZW9tZXRyeSI6eyJ0eXBlIjoiTGluZVN0cmluZyIsImNvb3JkaW5hdGVzIjpbWzU1Ljk2ODMyLDU0Ljc0ODM5Ml0sWzU1Ljk2NzE4Myw1NC43NDg2NjddLFs1NS45NjcxNDUsNTQuNzQ4NTk5XV19LCJpZCI6MjE0OH0seyJ0eXBlIjoiRmVhdHVyZSIsInByb3BlcnRpZXMiOnsiZGVzY3JpcHRpb24iOiIiLCJzdHJva2VDb2xvciI6IiMwMDAwMDAiLCJzdHJva2VXaWR0aCI6Miwic3Ryb2tlT3BhY2l0eSI6MSwiZmlsbENvbG9yIjoiIzAwMDAwMCIsImZpbGxPcGFjaXR5IjoxLCJ6SW5kZXgiOjN9LCJnZW9tZXRyeSI6eyJ0eXBlIjoiUG9seWdvbiIsImNvb3JkaW5hdGVzIjpbW1s1NS45NjcxNCw1NC43NDg1NzNdLFs1NS45NjcxOTksNTQuNzQ4NjAxXSxbNTUuOTY3MTE4LDU0Ljc0ODYxNl0sWzU1Ljk2NzE0LDU0Ljc0ODU3M11dXX0sImlkIjoyMjY4fSx7InR5cGUiOiJGZWF0dXJlIiwicHJvcGVydGllcyI6eyJjb2xvciI6IiNmZmMyMDEiLCJ0aXRsZSI6IiIsImRlc2NyaXB0aW9uIjoiUEhBKzBLSFF2dEN4MExqUXZkQyswTExRc0N3Z01URFFzRHd2Y0Q0PSIsInpJbmRleCI6MTAwMDAwMDAwMH0sImdlb21ldHJ5Ijp7InR5cGUiOiJQb2ludCIsImNvb3JkaW5hdGVzIjpbNTUuOTY3MDU5LDU0Ljc0ODUyN119LCJpZCI6Njc3fV0sIm1hcFBvc2l0aW9uIjp7ImxhdCI6NTQuNzQ4NTAxNzQzMzkyMSwibG9uIjo1NS45NjcxOTMyNDU4ODc3Niwiem9vbSI6MTh9LCJpc1doZWVsWm9vbUVuYWJsZWQiOnRydWV9Jyk8L3NjcmlwdD48c2NyaXB0IGFzeW5jPSIiIHR5cGU9InRleHQvamF2YXNjcmlwdCIgc3JjPSJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbS9ndGFnL2pzP2lkPVVBLTE1ODg2NjE2OC0xIj48L3NjcmlwdD48c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+KGZ1bmN0aW9uKGUpe2Z1bmN0aW9uIHQoKXtkYXRhTGF5ZXIucHVzaChhcmd1bWVudHMpfXdpbmRvdy5kYXRhTGF5ZXI9d2luZG93LmRhdGFMYXllcnx8W10sdCgianMiLG5ldyBEYXRlKSx0KCJjb25maWciLGUpLHdpbmRvdy5ndGFnPXR9KSgnVUEtMTU4ODY2MTY4LTEnKTwvc2NyaXB0PjwvYm9keT4=")</script>
+        </div>
+        <hr class="h-px my-8 bg-text border-0">
+        <div>
+          <!-- INFO -->
+          <div class="md:text-desktop-body text-mobile-body text-white text-center mb-10">
+            <p class="md:text-desktop-head text-mobile-head">О <span class="text-main">Нас</span></p>
+            <p >Вся информация о нас собрана тут.</p>
+          </div>
+          <div id="info" class="md:text-desktop-body text-mobile-body text-white">
+            <p class="mb-2"><span class="text-main">ProAuto</span> - это молодой и <span class="text-main">очень перспективный</span> автосервис.</p>
+            <p class="mb-2">Вся работа выполняется <span class="text-main">высококвалифицированными специалистами</span>.</p>
+            <p class="mb-2">Позвонить нами вы можете по этому номеру <span class="text-main">+7‒937‒155‒55‒16</span>.</p>
+            <p class="mb-2">Также вы можете написать нам на почту <span class="text-main">proauto702@gmail.com</span>.</p>
+            <p class="mb-2">Работаем мы ежедневно с <span class="text-main">10:00</span> до <span class="text-main">20:00</span>.</p>
+            <p class="mb-2">Находимся по адресу <span class="text-main">г. Уфа, ул Собинова, 10а</span>.</p>
+            <p class="mb-2">Вы можете найти нас на <a href="https://go.2gis.com/e87cl" class="text-main underline">2GIS</a>.</p>
+            <p class="mb-2">Вы моежет написать нам в 
+                <a class="text-main underline" href="https://api.whatsapp.com/send/?phone=79371555516&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%0A%0A%D0%9F%D0%B8%D1%88%D1%83+%D0%B8%D0%B7+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F+2%D0%93%D0%98%D0%A1.%0A%0A&type=phone_number&app_absent=0">
+                  Whatsapp
+                </a>.
+            </p>
+          </div>
+          
+        </div>
+        
      </div>
     </div>
     <script type="module" src="/src/main.js"></script>
     <script>
-      function ready() {
-        document.getElementById('main_btn').focus()
+      const homeLink = document.querySelector('#main_btn');
+      const servicesLink = document.querySelector('a[href="#services"]');
+      const mapLink = document.querySelector('a[href="#map"]');
+      const infoLink = document.querySelector('a[href="#info"]');
+      var lastLink = homeLink;
+
+      // Функция для проверки, виден ли элемент на экране
+      function isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
       }
-    
-      document.addEventListener("DOMContentLoaded", ready);
+
+      // Функция для обновления стилей компонентов сайдбара при скролле
+      function updateSidebarStyles() {
+        homeLink.classList.remove('active');
+        servicesLink.classList.remove('active');
+        mapLink.classList.remove('active');
+        infoLink.classList.remove('active');
+
+        if (isElementInViewport(document.getElementById('home'))) {
+          homeLink.classList.add('active');
+          lastLink = homeLink;
+        } else if (isElementInViewport(document.getElementById('services'))) {
+          servicesLink.classList.add('active');
+          lastLink = servicesLink;
+        } else if (isElementInViewport(document.getElementById('map'))) {
+          mapLink.classList.add('active');
+          lastLink = mapLink;
+        } else if (isElementInViewport(document.getElementById('info'))) {
+          infoLink.classList.add('active');
+          lastLink = infoLink;
+        } else {
+          lastLink.classList.add('active');
+        }
+      }
+
+      // Обновляем стили при загрузке страницы и при скролле
+      window.addEventListener('DOMContentLoaded', updateSidebarStyles);
+      window.addEventListener('scroll', updateSidebarStyles);
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.js" integrity="sha512-CABi9vrtlQz9otMo5nT0B3nCBmn5BirYvO3oCnulsEzRDekxdMEZ2rXg85Is5pdnc9HNAcUEjm/7HagpqAFa1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </body>

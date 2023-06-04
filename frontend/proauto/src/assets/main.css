@@ -10,6 +10,15 @@
   outline: none;
 }
 
+.active{
+  background: #fde047;
+  color: #0f172a;
+}
+
+.preserve-linebreaks {
+  white-space: pre-line;
+}
+
 /* @import './base.css';
 
 #app {
