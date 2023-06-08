@@ -1,0 +1,53 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./proauto
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=host.docker.internal
+      - DB_PORT=5432
+      - DB_NAME=proauto
+      - DB_USER=postgres
+      - DB_PASSWORD=1234
+    networks:
+      - proauto-network
+
+  db:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    image: postgres:15.2
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=proauto
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/docker-entrypoint-initdb.d/
+    networks:
+      - proauto-network
+
+  frontend:
+    build:
+      context: ./frontend/proauto
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    command: npm run dev -- --host 0.0.0.0 --port 5173
+    depends_on:
+      - backend
+    networks:
+      - proauto-network
+
+networks:
+  proauto-network:
+    driver: bridge
+
+volumes:
+  db-data:
