@@ -1,5 +1,17 @@
 version: '3'
 services:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+    networks:
+      - proauto-network
+    restart: unless-stopped
+
   backend:
     build:
       context: ./proauto
@@ -9,13 +21,14 @@ services:
     depends_on:
       - db
     environment:
-      - DB_HOST=host.docker.internal
+      - DB_HOST=db
       - DB_PORT=5432
       - DB_NAME=proauto
       - DB_USER=postgres
       - DB_PASSWORD=1234
     networks:
       - proauto-network
+    restart: unless-stopped
 
   db:
     build:
@@ -32,6 +45,7 @@ services:
       - db-data:/docker-entrypoint-initdb.d/
     networks:
       - proauto-network
+    restart: unless-stopped
 
   frontend:
     build:
@@ -44,6 +58,7 @@ services:
       - backend
     networks:
       - proauto-network
+    restart: unless-stopped
 
 networks:
   proauto-network:
