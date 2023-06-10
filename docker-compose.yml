@@ -57,7 +57,7 @@ services:
     depends_on:
       - backend
     environment:
-      - BACKEND_HOST=backend
+      - BACKEND_HOST=0.0.0.0
     networks:
       - proauto-network
     restart: unless-stopped
