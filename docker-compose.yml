@@ -58,7 +58,7 @@ services:
     depends_on:
       - backend
     environment:
-      - BACKEND_HOST=172.19.0.2
+      - BACKEND_HOST=localhost
     networks:
       - proauto-network
     restart: unless-stopped
