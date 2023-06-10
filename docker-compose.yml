@@ -20,6 +20,7 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    command: sh -c "python manage.py migrate && python manage.py runserver 212.113.117.97:8000"
     environment:
       - DB_HOST=db
       - DB_PORT=5432
@@ -57,7 +58,7 @@ services:
     depends_on:
       - backend
     environment:
-      - BACKEND_HOST=0.0.0.0
+      - BACKEND_HOST=172.19.0.2
     networks:
       - proauto-network
     restart: unless-stopped
