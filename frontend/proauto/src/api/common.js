@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const backendHost = '212.113.117.97';
+const backendHost = 'sazhod.ru';
 const apiUrl = `http://${backendHost}:8000/api/v1/`
 
 console.log(apiUrl)

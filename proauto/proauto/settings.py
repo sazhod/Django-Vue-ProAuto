@@ -18,7 +18,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'sazhod.ru'
+]
 
 
 # Application definition
@@ -146,5 +148,4 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     'http://sazhod.ru',
-    'http://212.113.117.97:8000',
 ]
