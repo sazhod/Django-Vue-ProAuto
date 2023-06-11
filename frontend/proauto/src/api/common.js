@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const backendHost = '172.19.0.2';
+const backendHost = '212.113.117.97';
 const apiUrl = `http://${backendHost}:8000/api/v1/`
 
 console.log(apiUrl)
