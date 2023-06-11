@@ -10,7 +10,6 @@ services:
       - frontend
     networks:
       - proauto-network
-    restart: unless-stopped
 
   backend:
     build:
@@ -29,7 +28,6 @@ services:
       - DB_PASSWORD=1234
     networks:
       - proauto-network
-    restart: unless-stopped
 
   db:
     build:
@@ -46,7 +44,6 @@ services:
       - db-data:/docker-entrypoint-initdb.d/
     networks:
       - proauto-network
-    restart: unless-stopped
 
   frontend:
     build:
@@ -61,7 +58,6 @@ services:
       - BACKEND_HOST=localhost
     networks:
       - proauto-network
-    restart: unless-stopped
 
 networks:
   proauto-network:
