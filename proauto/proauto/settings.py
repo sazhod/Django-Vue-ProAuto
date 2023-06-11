@@ -146,6 +146,4 @@ REST_FRAMEWORK = {
 
 # Django Cors Headers
 
-CORS_ALLOWED_ORIGINS = [
-    'http://sazhod.ru',
-]
+CORS_ORIGIN_ALLOW_ALL = True
