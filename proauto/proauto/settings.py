@@ -146,4 +146,5 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     'http://sazhod.ru',
+    '212.113.117.97',
 ]
