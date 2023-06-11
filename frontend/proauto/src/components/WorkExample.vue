@@ -18,12 +18,12 @@
             </p>
             <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <a v-bind:href="'http://localhost:8000/'+image.before_image">
-                        <img class="h-auto max-w-full rounded-lg" v-bind:src="'http://localhost:8000/'+image.before_image" alt="До">
+                    <a v-bind:href="'http://172.19.0.2:8000/'+image.before_image">
+                        <img class="h-auto max-w-full rounded-lg" v-bind:src="'http://172.19.0.2:8000/'+image.before_image" alt="До">
                     </a>
                 </div>
                 <div>
-                    <img class="h-auto max-w-full rounded-lg" v-bind:src="'http://localhost:8000/'+image.after_image" alt="После">
+                    <img class="h-auto max-w-full rounded-lg" v-bind:src="'http://172.19.0.2:8000/'+image.after_image" alt="После">
                 </div>
             </div>
         </div>

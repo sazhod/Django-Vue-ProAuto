@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const backendHost = process.env.VUE_APP_BACKEND_HOST;
+const backendHost = '172.19.0.2';
 const apiUrl = `http://${backendHost}:8000/api/v1/`
 
 console.log(apiUrl)
