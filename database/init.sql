@@ -20,13 +20,10 @@ SET row_security = off;
 
 SET SESSION AUTHORIZATION 'postgres';
 
-DROP DATABASE "proauto";
 --
 -- TOC entry 3471 (class 1262 OID 16713)
 -- Name: proauto; Type: DATABASE; Schema: -; Owner: postgres
 --
-
-CREATE DATABASE "proauto" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'Russian_Russia.1251';
 
 
 \connect "proauto"
