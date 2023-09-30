@@ -25,7 +25,8 @@ SET SESSION AUTHORIZATION 'postgres';
 -- Name: proauto; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-
+SELECT 'CREATE DATABASE proauto'
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'proauto')\gexec
 \connect "proauto"
 
 SET statement_timeout = 0;
