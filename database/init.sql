@@ -58,7 +58,7 @@ SET default_table_access_method = "heap";
 -- TOC entry 221 (class 1259 OID 16737)
 -- Name: auth_group; Type: TABLE; Schema: public; Owner: postgres
 --
-
+SHOW SEARCH_PATH;
 CREATE EXTENSION dblink SCHEMA public;
 
 SELECT dblink_connect('hostaddr=127.0.0.1 port=5432 user=postgres password=1234');
