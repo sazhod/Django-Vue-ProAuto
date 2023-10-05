@@ -58,17 +58,17 @@ SET default_table_access_method = "heap";
 -- TOC entry 221 (class 1259 OID 16737)
 -- Name: auth_group; Type: TABLE; Schema: public; Owner: postgres
 --
-SHOW SEARCH_PATH;
+SELECT CURRENT_SCHEMA;
 CREATE EXTENSION dblink SCHEMA public;
 
-SELECT dblink_connect('hostaddr=127.0.0.1 port=5432 user=postgres password=1234');
+--SELECT dblink_connect('hostaddr=127.0.0.1 port=5432 user=postgres password=1234');
 DO
 $do$
 BEGIN
    IF EXISTS (SELECT FROM pg_database WHERE datname = 'proauto') THEN
       RAISE NOTICE 'Database already exists';  -- optional
    ELSE
-      PERFORM dblink_exec('hostaddr=127.0.0.1 port=5432 user=postgres password=1234', 'CREATE DATABASE proauto');
+      PERFORM public.dblink_exec('hostaddr=127.0.0.1 port=5432 user=postgres password=1234', 'CREATE DATABASE proauto');
    END IF;
 END
 $do$;
