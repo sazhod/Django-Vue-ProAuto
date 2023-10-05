@@ -31,10 +31,10 @@ SELECT dblink_connect('hostaddr=127.0.0.1 port=5432 user=postgres password=1234'
 DO
 $do$
 BEGIN
-   IF EXISTS (SELECT FROM pg_database WHERE datname = 'proauto123') THEN
+   IF EXISTS (SELECT FROM pg_database WHERE datname = 'proauto') THEN
       RAISE NOTICE 'Database already exists';  -- optional
    ELSE
-      PERFORM dblink_exec('hostaddr=127.0.0.1 port=5432 user=postgres password=1234', 'CREATE DATABASE proauto123');
+      PERFORM dblink_exec('hostaddr=127.0.0.1 port=5432 user=postgres password=1234', 'CREATE DATABASE proauto');
    END IF;
 END
 $do$;
