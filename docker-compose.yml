@@ -11,6 +11,23 @@ services:
     networks:
       - proauto-network
 
+  db:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    image: postgres:15.2
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=proauto
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - proauto-network
+
   backend:
     build:
       context: ./proauto
@@ -26,23 +43,6 @@ services:
       - DB_NAME=proauto
       - DB_USER=postgres
       - DB_PASSWORD=1234
-    networks:
-      - proauto-network
-
-  db:
-    build:
-      context: ./database
-      dockerfile: Dockerfile
-    image: postgres:15.2
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=1234
-      - POSTGRES_DB=proauto
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - db-data:/var/lib/postgresql/data
     networks:
       - proauto-network
 

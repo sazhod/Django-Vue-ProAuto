@@ -59,7 +59,7 @@ SET default_table_access_method = "heap";
 -- Name: auth_group; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE EXTENSION IF NOT EXISTS dblink SCHEMA public;
+CREATE EXTENSION dblink SCHEMA public;
 
 SELECT dblink_connect('hostaddr=127.0.0.1 port=5432 user=postgres password=1234');
 DO
@@ -72,6 +72,8 @@ BEGIN
    END IF;
 END
 $do$;
+
+ALTER DATABASE proauto OWNER TO postgres;
 
 \connect "proauto"
 
