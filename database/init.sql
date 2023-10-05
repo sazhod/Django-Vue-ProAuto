@@ -25,7 +25,7 @@ SET SESSION AUTHORIZATION 'postgres';
 -- Name: proauto; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE EXTENSION IF NOT EXISTS dblink;
+CREATE EXTENSION IF NOT EXISTS dblink SCHEMA public;
 
 SELECT dblink_connect('hostaddr=127.0.0.1 port=5432 user=postgres password=1234');
 DO
