@@ -25,8 +25,20 @@ SET SESSION AUTHORIZATION 'postgres';
 -- Name: proauto; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-SELECT 'CREATE DATABASE proauto'
-WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'proauto')\gexec
+CREATE EXTENSION IF NOT EXISTS dblink SCHEMA public;
+
+SELECT dblink_connect('hostaddr=127.0.0.1 port=5432 user=postgres password=1234');
+DO
+$do$
+BEGIN
+   IF EXISTS (SELECT FROM pg_database WHERE datname = 'proauto123') THEN
+      RAISE NOTICE 'Database already exists';  -- optional
+   ELSE
+      PERFORM dblink_exec('hostaddr=127.0.0.1 port=5432 user=postgres password=1234', 'CREATE DATABASE proauto123');
+   END IF;
+END
+$do$;
+
 \connect "proauto"
 
 SET statement_timeout = 0;
